@@ -12,7 +12,7 @@ database: "tut"
 
 var data;
 
-//http.createServer(function (request, response) {
+http.createServer(function (request, response) {
 
 	connection.query('select * from task_location', function (error, rows, fields) { 
 	data = JSON.stringify(rows);
