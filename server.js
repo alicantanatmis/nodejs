@@ -1,6 +1,9 @@
 var http = require("http"),
 mysql = require("mysql");
 
+var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port    = process.env.OPENSHIFT_NODEJS_PORT || 80;
+
 var connection = mysql.createConnection({
 user: "root",
 password: "password",
@@ -18,7 +21,7 @@ http.createServer(function (request, response) {
 	response.setHeader("Content-Type", "x-application/json");
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.end(data);
-}).listen(8080, "0.0.0.0");
+}).listen(port, ipaddr);
 
 
 
